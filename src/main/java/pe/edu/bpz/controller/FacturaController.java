@@ -50,7 +50,7 @@ public class FacturaController {
 		model.addAttribute("proveedores", pService.findAll());
 		model.addAttribute("titulo", "Crear Factura");
 		
-		return "/factura/crear";
+		return "factura/crear";
 	}
 	
 	@SuppressWarnings("deprecation")
