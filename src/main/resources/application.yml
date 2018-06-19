@@ -1,0 +1,18 @@
+#configuracion de acceso a BD
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update #create-drop 
+  #estrategia de generacion de base de datos
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/BPZdb
+    username: postgres
+    password: postgresql
+    
+    
+    
+server:
+  port: 8090

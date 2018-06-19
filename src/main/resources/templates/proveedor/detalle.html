@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  
+  <nav th:replace="layout/layout :: nav"></nav>
+ 
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" th:text="'Detalle ' + ${nombre}"></li>
+      </ol>
+	
+		
+		
+      <div class="row">
+      <div class="col-sm-6">
+      <div class="card mb-0 mt-4">
+        <div class="card-header ">
+          <h5 th:text="  ${persona.nombre} + ' ' + ${persona.apellido}"></h5></div>
+        <div class="card-body">
+          	<div class="row">
+          		<div class="col">
+          			<label>DNI:</label><h5 class="col" th:text="${persona.dni}"></h5>
+          			<label>Celular:</label><h5 class="col" th:text="${persona.celular}"></h5>
+          		</div>
+          		<div class="col">
+          			<label>Correo:</label><h5 class="col" th:text="${persona.correo}"></h5>
+          		</div>
+          	</div>
+        </div>
+      </div>
+      </div>
+      </div>
+          <div class="card mb-3 mt-4">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Facturas</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                	<th>id</th>
+					<th>Codigo Servicio</th>
+					<th>Fecha de emision</th>
+					<th>Fecha de vencimiento</th>
+					<th>Periodo</th>
+					<th>Total</th>
+					<th>Editar</th>
+					<th>Eliminar</th>
+                </tr>
+              </thead>
+              
+              <tbody>
+                <tr th:each="fact: ${proveedor.facturas}">
+                	<td><a class="btn btn-warning" th:href="#"
+							th:text="${fact.id}"></a></td>
+							<td th:text="${fact.codigoServicio}"></td>
+							<td th:text="${fact.fechaEmision}"></td>
+							<td th:text="${fact.fechaVencimiento}"></td>
+							<td th:text="${fact.periodoDetraccion}"></td>
+							<td th:text="${fact.total}"></td>
+							<td><a class="btn btn btn-outline-warning btn-sm"
+								th:href="@{/proveedor/editar/} + ${proveedor.idProveedor}" th:text="'editar'"
+								></a></td>
+							<td><a class="btn btn-outline-danger btn-sm"
+								th:href="@{/proveedor/eliminar/} + ${proveedor.idProveedor}" th:text="'eliminar'"
+								onclick="return confirm('Estas seguro que quieres eliminar?');"></a></td>
+								
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <a th:href="@{'/factura/crear/' + ${proveedor.idProveedor}}" class="btn btn-outline-success">Agregar Facturas</a>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+      
+     
+   
+    </div>
+    
+    <footer th:replace="layout/layout :: footer"></footer>
+    
+    <div th:replace="layout/layout :: div"></div>
+     
+  </div>
+</body>
+
+</html>
