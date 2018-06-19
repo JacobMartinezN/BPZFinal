@@ -36,6 +36,12 @@ public class FacturaService implements IFacturaService{
 		return facturaDao.findById(id).orElse(null);
 	}
 
+	@Override
+	public List<Factura> findByEstado() {
+		// TODO Auto-generated method stub
+		return facturaDao.findByEstado();
+	}
+
 	
 
 }

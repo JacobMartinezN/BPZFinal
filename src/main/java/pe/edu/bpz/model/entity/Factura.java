@@ -35,6 +35,9 @@ public class Factura implements Serializable {
 	private String numFactura;
 	
 	@NotNull
+	private String estado;
+	
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date fechaEmision;
@@ -171,6 +174,14 @@ public class Factura implements Serializable {
 
 	public void setPago(Pago pago) {
 		this.pago = pago;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	

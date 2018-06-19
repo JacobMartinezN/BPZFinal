@@ -35,8 +35,7 @@
               
               <tbody>
                 <tr th:each="factura: ${facturas}">
-                	<td><a class="btn btn-link" th:href="@{/factura/detalle/} + ${factura.id}"
-							th:text="${factura.id}"></a></td>
+                	<td><input type="checkbox" aria-label="Checkbox for following text input"></td>
 							<td th:text="${factura.numFactura}"></td>
 							<td th:text="${factura.fechaVencimiento}"></td>
 							<td th:text="${factura.total}"></td>
@@ -50,7 +49,7 @@
               </tbody>
             </table>
           </div>
-          <a th:href="@{/factura/crear/}" class="btn btn-outline-success">Registrar Factura</a>
+          <a th:href="@{/factura/crear/}" class="btn btn-outline-success">Pagar Facturas</a>
         </div>
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
