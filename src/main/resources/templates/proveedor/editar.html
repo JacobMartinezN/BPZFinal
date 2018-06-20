@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  
+  <nav th:replace="layout/layout :: nav"></nav>
+ 
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" th:text="${titulo}"></li>
+      </ol>
+
+      <div class="mb-0 mt-4">
+            <i class="fa fa-newspaper-o"> Editar Proveedor</i></div>
+    	
+     <hr class="mt-2">
+     <div class="card-columns">
+     	   <div class="card mb-3">
+              
+              <div class="card-body">
+                <h6 class="card-title mb-1"><a href="#">Proveedor</a></h6>
+              </div>
+              <hr class="my-0">
+            
+              <hr class="my-0">
+              <div class="card-body small bg-faded">
+                <div class="media">
+                  
+                  <div class="media-body">
+                  <form th:action="@{/proveedor/editar}" th:object="${proveedor}" method="post"
+					enctype="multipart/form-data">
+                   		<div class="form-group row">
+						<label for="razon_social" class="col-sm-2 col-form-label">Razon Social</label>
+						<div class="col-sm-4">
+							<input type="text" th:field="*{razonSocial}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> 
+								
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="ruc" class="col-sm-2 col-form-label">RUC</label>
+						<div class="col-sm-4">
+							<input type="text" th:field="*{ruc}" class="form-control"
+								th:errorclass="'form-control alert-danger'" />
+								
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="tipo_persona" class="col-sm-2 col-form-label">Tipo Persona</label>
+						<div class="col-sm-4">
+							<select class="form-control" th:field="*{tipoPersona}">
+							  <option th:value="volvo">Natural</option>
+							  <option th:value="saab">Juridica</option>
+							  
+							</select> 
+						</div>
+					</div>
+				<div class="form-group row">
+						<label for="cuenta_bco_nacion" class="col-sm-2 col-form-label">Cuenta Banco Nacion</label>
+						<div class="col-sm-4">
+							<input type="text" th:field="*{cuentaBcoNacion}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> 
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input type="submit" th:value="'Editar proveedor'"
+								class="btn btn-secondary" />
+						</div>
+					</div>
+				</form>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+     
+     
+     </div>
+   
+    </div>
+    
+    <footer th:replace="layout/layout :: footer"></footer>
+    
+    <div th:replace="layout/layout :: div"></div>
+    
+  </div>
+</body>
+
+</html>

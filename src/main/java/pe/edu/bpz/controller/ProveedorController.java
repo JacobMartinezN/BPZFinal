@@ -94,7 +94,7 @@ public class ProveedorController {
 		proveedor = pService.findbyId(id);
 		model.addAttribute("proveedor", proveedor);
 		model.addAttribute("titulo", "Editar");
-		return "editarProveedor";
+		return "proveedor/editar";
 	}
 	@PostMapping(value="/editar")
 	public String guardar(@Valid Proveedor proveedor, BindingResult result,Model model, RedirectAttributes flash,
