@@ -35,6 +35,9 @@ public class FacturaController {
 	@Autowired
 	private IFacturaService fService;
 	
+
+	
+	
 	@GetMapping(value = "/listar")
 	public String listar(Model model){
 		model.addAttribute("titulo", "Listado de Facturas");

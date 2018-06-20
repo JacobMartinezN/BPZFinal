@@ -33,6 +33,8 @@ public class ProveedorController {
 	@Autowired
 	private IPersonaContactoService pCService;
 	
+	
+	
 	@GetMapping(value = "/listar")
 	public String listar(Model model){
 		model.addAttribute("titulo", "Listado de proveedores");
