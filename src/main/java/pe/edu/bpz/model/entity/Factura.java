@@ -63,7 +63,8 @@ public class Factura implements Serializable {
 	@NotNull
 	private double total;
 	
-	private double porcetajeDetraccion;
+	@NotNull
+	private double porcentajeDetraccion;
 	
 	@OneToOne(mappedBy="factura" ,fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private Pago pago;
@@ -142,12 +143,12 @@ public class Factura implements Serializable {
 		this.total = total;
 	}
 
-	public double getPorcetajeDetraccion() {
-		return porcetajeDetraccion;
+	public double getPorcentajeDetraccion() {
+		return porcentajeDetraccion;
 	}
 
-	public void setPorcetajeDetraccion(double porcetajeDetraccion) {
-		this.porcetajeDetraccion = porcetajeDetraccion;
+	public void setPorcentajeDetraccion(double porcentajeDetraccion) {
+		this.porcentajeDetraccion = porcentajeDetraccion;
 	}
 
 

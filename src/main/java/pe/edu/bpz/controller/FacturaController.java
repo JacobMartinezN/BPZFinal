@@ -62,7 +62,7 @@ public class FacturaController {
 			SessionStatus status) {
 		if(result.hasErrors()) {
 			model.addAttribute("titulo", "Crear Factura");
-			return "crearFactura";
+			return "factura/crear";
 		}
 		
 		System.out.print("\n\n\n\n"+ facturaViewModel.getFactura().getDescripcion() + "\n\n\n\n");
@@ -77,6 +77,9 @@ public class FacturaController {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		if(facturaViewModel.getFactura().getEstado()==null) {
+			facturaViewModel.getFactura().setEstado("Por Pagar");
 		}
 		
 		facturaViewModel.getFactura().setProveedor(facturaViewModel.getProveedor());
@@ -110,7 +113,7 @@ public class FacturaController {
 		
 		status.setComplete();
 		
-		return "crearFactura";
+		return "factura/crear";
 	}
 	
 	
