@@ -57,16 +57,17 @@ public class ProveedorController {
 			model.addAttribute("titulo", "Formulario de Proveedor");
 			return "proveedor/crear";
 		}
+		pCService.save(contenedor.getPersonacontacto());		
+		PersonaContacto personacontacto = pCService.findByDni(contenedor.getPersonacontacto().getDni());
 		
-		pCService.save(contenedor.getPersonacontacto());
-		Proveedor proveedorCompleto = new Proveedor();
-		proveedorCompleto = contenedor.getProveedor();
-		PersonaContacto personacontacto = new PersonaContacto();
-		personacontacto = pCService.findByDni(contenedor.getPersonacontacto().getDni());
+		Proveedor proveedorCompleto = contenedor.getProveedor();		
 		proveedorCompleto.setPersonaContacto(personacontacto);
-				
-		pService.save(proveedorCompleto);
+		personacontacto.setProveedor(proveedorCompleto);
+		proveedorCompleto.setPersonaContacto(personacontacto);
+		personacontacto.setProveedor(proveedorCompleto);
 		
+		pService.save(proveedorCompleto);
+		pCService.save(personacontacto);	
 		status.setComplete();
 		
 		return "redirect:/proveedor/listar";

@@ -115,7 +115,20 @@ public class FacturaController {
 		
 		return "factura/crear";
 	}
-	
+	@GetMapping("/detalle/{id}")
+	public String detalle(@PathVariable(value="id") Long id, Model model, RedirectAttributes flash) {
+		
+		Factura factura= fService.findbyId(id);
+		if(factura==null) {
+			flash.addFlashAttribute("error", "La factura no existe");
+			return "redirect:/factura/listar";
+		}
+		model.addAttribute("factura", factura);
+		
+		
+		
+		return "factura/detalle";
+	}
 	
 	@InitBinder     
 	public void initBinder(WebDataBinder binder){

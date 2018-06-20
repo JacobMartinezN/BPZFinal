@@ -87,6 +87,14 @@ public class PersonaContacto implements Serializable {
 	public void setIdPersonaContacto(Long idPersonaContacto) {
 		this.idPersonaContacto = idPersonaContacto;
 	}
+
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}
 	
 	
 	
