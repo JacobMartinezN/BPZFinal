@@ -11,7 +11,7 @@ import pe.edu.bpz.model.entity.Factura;
 @Repository
 public interface IFacturaDao extends JpaRepository<Factura, Long> {
 	
-	@Query("select f from Factura f where f.estado like 'NoPagado'")
+	@Query("select f from Factura f where f.estado like 'Por Pagar'")
 	public List<Factura> findByEstado();
 
 }

@@ -1,7 +1,7 @@
 package pe.edu.bpz.model.entity;
 
 import java.io.Serializable;
-
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -30,8 +30,14 @@ public class Pago implements Serializable  {
 	@JoinColumn(name="id_factura")
 	private Factura factura;
 	
-	
+	@Temporal(TemporalType.DATE)
+	private Date fechaPago;
 
+	@PrePersist
+	public void prePersist() {
+		fechaPago = new Date();
+	}
+	
 	public Long getIdPago() {
 		return idPago;
 	}

@@ -121,7 +121,7 @@ public class ProveedorController {
 		}
 		model.addAttribute("proveedor", proveedor);
 		model.addAttribute("nombre", proveedor.getRazonSocial());
-		model.addAttribute("persona", proveedor.getPersonaContacto());
+		model.addAttribute("persona", pCService.findById(proveedor.getIdProveedor().longValue()));
 		
 		return "proveedor/detalle";
 	}

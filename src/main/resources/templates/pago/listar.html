@@ -20,11 +20,12 @@
           <i class="fa fa-table"></i> Facturas</div>
         <div class="card-body">
           <div class="table-responsive">
+          	<form method="post" th:action="@{/pago/pagar}">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
                 	
-					<th>ID</th>
+					<th>Seleccionar</th>
 					<th>Numero de Factura</th>
 					<th>Fecha de Vencimiento</th>
 					<th>Total</th>
@@ -35,7 +36,7 @@
               
               <tbody>
                 <tr th:each="factura: ${facturas}">
-                	<td><input type="checkbox" aria-label="Checkbox for following text input"></td>
+                	<td><input type="checkbox" aria-label="Checkbox for following text input" name="idfacturas" th:value="${factura.id}"></td>
 							<td th:text="${factura.numFactura}"></td>
 							<td th:text="${factura.fechaVencimiento}"></td>
 							<td th:text="${factura.total}"></td>
@@ -48,8 +49,11 @@
                 </tr>
               </tbody>
             </table>
+           <input type="submit" th:value="'Crear proveedor'"
+								class="btn btn-danger" />
+            </form>
           </div>
-          <a th:href="@{/factura/crear/}" class="btn btn-outline-success">Pagar Facturas</a>
+          
         </div>
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
