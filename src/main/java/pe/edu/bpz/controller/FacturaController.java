@@ -81,7 +81,10 @@ public class FacturaController {
 		if(facturaViewModel.getFactura().getEstado()==null) {
 			facturaViewModel.getFactura().setEstado("Por Pagar");
 		}
-		
+		if (facturaViewModel.getFactura().getFechaVencimiento().before(facturaViewModel.getFactura().getFechaEmision())) {
+			flash.addFlashAttribute("error", "Fecha de Vencimiento no puede ser antes que la fecha de Emision");
+			return "factura/crear";
+		}
 		facturaViewModel.getFactura().setProveedor(facturaViewModel.getProveedor());
 		
 		fService.save(facturaViewModel.getFactura());

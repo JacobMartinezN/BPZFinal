@@ -35,7 +35,6 @@ public class PersonaContactoController {
 		return "listarPersonaContacto";	
 	}
 	
-
 	@GetMapping("/eliminar/{id}")
 	public String eliminar(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
 
@@ -53,17 +52,16 @@ public class PersonaContactoController {
 	@GetMapping("/editar/{id}")
 	public String editar(@PathVariable(value = "id") Long id, Model model) {
 
-		PersonaContacto persona = new PersonaContacto();
-		persona = pCService.findById(id);
+		PersonaContacto persona = pCService.findById(id);
 		model.addAttribute("persona", persona);
 		model.addAttribute("titulo", "Editar");
-		return "editarPersonaContacto";
+		return "persona/editar";
 	}
 	@PostMapping(value="/editar")
 	public String guardar(@Valid PersonaContacto persona, BindingResult result,Model model, RedirectAttributes flash,
 			SessionStatus status) {
 		if(result.hasErrors()) {
-			return "redirect:/persona/listar";
+			return "persona/editar";
 		}
 		
 		
@@ -72,6 +70,6 @@ public class PersonaContactoController {
 		
 		status.setComplete();
 		
-		return "redirect:/persona/listar";
+		return "redirect:/proveedor/detalle/"+persona.getProveedor().getIdProveedor().toString();
 	}
 }

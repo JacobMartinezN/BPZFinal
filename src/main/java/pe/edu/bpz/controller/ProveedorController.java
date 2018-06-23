@@ -47,7 +47,7 @@ public class ProveedorController {
 
 		Contenedor contenedor = new Contenedor();
 		model.addAttribute("contenedor", contenedor);
-		model.addAttribute("titulo", "Nuevo Proveedor");
+		model.addAttribute("titulo", "Nuevo Proveedor y Persona Contacto");
 		return "proveedor/crear";
 	}
 	@PostMapping(value="/crear")

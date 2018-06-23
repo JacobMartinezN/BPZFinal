@@ -31,7 +31,7 @@ public class Proveedor implements Serializable {
 	private String razonSocial;
 	
 	@NotNull
-	private int ruc;
+	private String ruc;
 	
 	@NotNull
 	private int cuentaBcoNacion;
@@ -71,11 +71,11 @@ public class Proveedor implements Serializable {
 		this.razonSocial = razonSocial;
 	}
 
-	public int getRuc() {
+	public String getRuc() {
 		return ruc;
 	}
 
-	public void setRuc(int ruc) {
+	public void setRuc(String ruc) {
 		this.ruc = ruc;
 	}
 
