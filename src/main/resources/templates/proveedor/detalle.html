@@ -20,12 +20,11 @@
       <div class="col-sm-6">
       <div class="card mb-0 mt-4">
       
-        <div class="card-header ">
-        	<div class= "col">
-          <h5 th:text="  ${persona.nombre} + ' ' + ${persona.apellido}"></h5>
+        <div class="card-header">
+          <i class="fa fa-table" th:text=" ' ' + ${persona.nombre} + ' ' + ${persona.apellido}"></i>       
           
-         	 </div>
-          </div>
+           <a class="btn btn btn-outline-warning btn-sm"
+      th:href="@{/persona/editar/} + ${persona.idPersonaContacto}" th:text="'Editar Persona'"></a></div>
           
         <div class="card-body">
         
@@ -39,8 +38,7 @@
           			<label>Correo:</label><h5 class="col" th:text="${persona.correo}"></h5>
           		</div>
           		<div class="col">
-          		<a class="btn btn btn-outline-warning btn-sm" th:href="@{/persona/editar/} + ${persona.idPersonaContacto}"
-				>Editar Persona</a>
+          		
           		</div>
 				
           	</div>
@@ -89,10 +87,54 @@
           </div>
         
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">Updated Now</div>
       </div>
       
-     
+      <div class="card mb-3 mt-4">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Cuentas   
+           <a class="btn btn btn-outline-warning btn-sm"
+      th:href="@{/cuenta/crear/} + ${proveedor.idProveedor}" th:text="'Agregar Cuenta'"></a></div>
+          
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                	<th>id</th>
+					<th>Cuenta</th>
+					<th>Cuenta Interbancaria</th>
+					<th>Tipo Cuenta</th>
+					<th>Tipo Moneda</th>
+					<th>Banco</th>
+					<th>Editar</th>
+					<th>Eliminar</th>
+                </tr>
+              </thead>
+              
+              <tbody>
+                <tr th:each="cuenta: ${proveedor.cuentas}">
+                	<td th:text="${cuenta.idCuenta}"></td>
+							<td th:text="${cuenta.cuenta}"></td>
+							<td th:text="${cuenta.cuentaInterbancaria}"></td>
+							<td th:text="${cuenta.tipoCuenta}"></td>
+							<td th:text="${cuenta.tipoMoneda}"></td>
+							<td th:text="${cuenta.banco.razonSocial}"></td>
+							<td><a class="btn btn btn-outline-warning btn-sm"
+								th:href="@{/cuenta/editar/} + ${cuenta.idCuenta}" th:text="'editar'"
+								></a></td>
+							<td><a class="btn btn-outline-danger btn-sm"
+								th:href="@{/cuenta/eliminar/} + ${cuenta.idCuenta}" th:text="'eliminar'"
+								onclick="return confirm('Estas seguro que quieres eliminar?');"></a></td>
+								
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        
+        </div>
+        <div class="card-footer small text-muted">Updated Now</div>
+      </div>
    
     </div>
     

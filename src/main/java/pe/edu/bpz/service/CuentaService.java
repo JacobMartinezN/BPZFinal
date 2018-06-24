@@ -29,4 +29,18 @@ public class CuentaService implements ICuentaService {
 		
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Cuenta findById(Long id) {
+		// TODO Auto-generated method stub
+		return cuentaDao.findById(id).orElse(null);
+	}
+
+	@Override
+	@Transactional
+	public void eliminarPorId(Long id) {
+		// TODO Auto-generated method stub
+		cuentaDao.deleteById(id);
+	}
+
 }

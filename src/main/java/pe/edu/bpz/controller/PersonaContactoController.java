@@ -54,7 +54,7 @@ public class PersonaContactoController {
 
 		PersonaContacto persona = pCService.findById(id);
 		model.addAttribute("persona", persona);
-		model.addAttribute("titulo", "Editar");
+		model.addAttribute("titulo", "Editar Persona");
 		return "persona/editar";
 	}
 	@PostMapping(value="/editar")

@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pe.edu.bpz.model.entity.Contenedor;
 import pe.edu.bpz.model.entity.PersonaContacto;
 import pe.edu.bpz.model.entity.Proveedor;
+import pe.edu.bpz.service.ICuentaService;
 import pe.edu.bpz.service.IPersonaContactoService;
 import pe.edu.bpz.service.IProveedorService;
 
@@ -32,6 +33,7 @@ public class ProveedorController {
 	private IProveedorService pService;
 	@Autowired
 	private IPersonaContactoService pCService;
+	
 	
 	
 	
@@ -119,6 +121,7 @@ public class ProveedorController {
 			flash.addFlashAttribute("error", "El proveedor no existe");
 			return "redirect:/proveedor/listar";
 		}
+		
 		model.addAttribute("proveedor", proveedor);
 		model.addAttribute("nombre", proveedor.getRazonSocial());
 		model.addAttribute("persona", pCService.findById(proveedor.getIdProveedor().longValue()));

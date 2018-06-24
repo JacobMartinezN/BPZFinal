@@ -34,7 +34,7 @@ private static final long serialVersionUID = 1L;
 	@NotNull
 	private  String tipoCuenta;
 	
-	@NotNull
+	
 	private  int tipoCuentaDeposito;
 	
 	@ManyToOne(fetch = FetchType.LAZY)

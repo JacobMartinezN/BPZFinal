@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  
+  <nav th:replace="layout/layout :: nav"></nav>
+ 
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" th:text="${titulo}"></li>
+      </ol>
+ <form th:action="@{/cuenta/crear}" th:object="${cuenta}" method="post"
+					enctype="multipart/form-data">
+					<input type="hidden" th:field="*{idCuenta}"/>
+					<input type="hidden" th:field="*{proveedor}"/>
+					<hr class="my-0">
+					 
+              <hr class="my-0">
+              
+              
+              
+					<div class="media-body  mt-4">
+					<div class="form-group col-md-2">
+						<label for="BancoSelect" class="form-group">Banco</label>
+						<div class="form-group">
+							<select  class="form-control" id="BancoSelect" th:field="*{banco}">
+								<option th:each="banco: ${bancos}" th:value="${banco.idBanco}" th:text="${banco.razonSocial}"></option>
+								
+							</select>
+						</div>
+					</div>
+					
+						<div class="form-group col-md-6">
+						<label  class="form-group">Cuenta</label>
+						<div class="form-group">
+							<input type="text" th:field="*{cuenta}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> 
+								
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label  class="form-group">Cuenta Interbancaria</label>
+						<div class="form-group">
+							<input type="text" th:field="*{cuentaInterbancaria}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> 
+								
+						</div>
+					</div>
+					<div class="form-group col-md-2">
+				      <label for="inputCity">Tipo Moneda</label>
+				      	<select class="form-control" th:field="*{tipoMoneda}">
+						  <option th:value="10" th:text="Dolar"></option>
+						  <option th:value="01" th:text="Soles"></option>
+						</select>
+				    </div>
+					<div class="form-group col-md-2">
+				      <label for="inputCity">Tipo Cuenta</label>
+				      	<select class="form-control" th:field="*{tipoCuenta}">
+						  <option th:value="C" th:text="Corriente"></option>
+						  <option th:value="P" th:text="Ahorros"></option>
+						</select>
+				    </div>
+					
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input type="submit" th:value="${titulo}"
+								class="btn btn-secondary" />
+						</div>
+					</div>
+				</form>
+                  </div>
+                </div>
+          
+              
+          
+     
+     
+     
+    
+    <footer th:replace="layout/layout :: footer"></footer>
+    
+    <div th:replace="layout/layout :: div"></div>
+    
+  
+</body>
+
+</html>
