@@ -17,8 +17,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import pe.edu.bpz.model.entity.PersonaContacto;
-
+import pe.edu.bpz.model.entity.Proveedor;
 import pe.edu.bpz.service.IPersonaContactoService;
+import pe.edu.bpz.service.IProveedorService;
 
 @Controller
 @SessionAttributes("persona")
@@ -26,6 +27,7 @@ import pe.edu.bpz.service.IPersonaContactoService;
 public class PersonaContactoController {
 	@Autowired
 	private IPersonaContactoService pCService;
+	private IProveedorService pService;
 	
 	
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
@@ -64,12 +66,11 @@ public class PersonaContactoController {
 			return "persona/editar";
 		}
 		
-		
-				
+			
 		pCService.save(persona);
-		
+	
 		status.setComplete();
 		
-		return "redirect:/proveedor/detalle/"+persona.getProveedor().getIdProveedor().toString();
+		return "redirect:/proveedor/detalle/"+ persona.getIdPersonaContacto();
 	}
 }

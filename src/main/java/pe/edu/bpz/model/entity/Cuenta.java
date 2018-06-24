@@ -34,9 +34,6 @@ private static final long serialVersionUID = 1L;
 	@NotNull
 	private  String tipoCuenta;
 	
-	
-	private  int tipoCuentaDeposito;
-	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Proveedor proveedor;
 	
@@ -83,13 +80,6 @@ private static final long serialVersionUID = 1L;
 		this.tipoCuenta = tipoCuenta;
 	}
 
-	public int getTipoCuentaDeposito() {
-		return tipoCuentaDeposito;
-	}
-
-	public void setTipoCuentaDeposito(int tipoCuentaDeposito) {
-		this.tipoCuentaDeposito = tipoCuentaDeposito;
-	}
 
 	public Proveedor getProveedor() {
 		return proveedor;

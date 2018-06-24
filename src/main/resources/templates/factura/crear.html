@@ -63,35 +63,36 @@
 				  </div>
 				  <div class="form-row">
 				    <div class="form-group">
-				      <label for="inputCity">Tipo moneda</label>
+				      <label for="inputCity">Moneda</label>
 				      	<select class="form-control" th:field="*{factura.tipoMoneda}">
 						  <option th:value="10" th:text="Dolar"></option>
 						  <option th:value="01" th:text="Soles"></option>
 						</select>
 				    </div>
 				  
-				    <div class="form-group col-md-2">
+				    <div class="form-group ">
 				      <label for="subtotal">Subtotal</label>
 				      <input type="number" th:field="*{factura.subtotal}" class="form-control" id="subtotal">
 				    </div>
 				    
 				    
-				    
-				     <div class="form-group col-md-2">
-				      <label for="total">Total</label>
-				      <input type="number" th:field="*{factura.total}" class="form-control" id="total">
-				    </div>
-				    
-				    <div class="form-group">
+				        <div class="form-group">
 				    <label th:text="'IGV'"></label>
 					<label class="form-control">18%</label>
 				    </div>
 				    
+				     <div class="form-group ">
+				      <label for="total">Total</label>
+				      <input readonly th:field="*{factura.total}" class="form-control" id="total">
+				    </div>
+				    
+				
+				    
 				    
 				    <div class="form-group">
-						<label >% Detracciones</label>
-							 <select th:field="*{factura.porcentajeDetraccion}" class="form-control" id="exampleFormControlSelect1">
-						      <option th:value="1.5">1.5</option>
+						<label for="exampleFormControlSelect1">Detracciones</label>
+							 <select style="width:200px;" th:field="*{factura.porcentajeDetraccion}" class="form-control" id="exampleFormControlSelect1">
+						      <option th:value="1.5">1.5 </option>
 						      <option th:value="4">4</option>
 						      <option th:value="10">10</option>
 						      <option th:value="12">12</option>
@@ -101,8 +102,8 @@
 						
 						
 						
-				    <div class="form-group col-md-2">
-						<label for="ProveedorSelect" class="form-group">Proveedor</label>
+				    <div class="form-group ">
+						<label>Proveedor</label>
 						<div class="form-group">
 							<select  class="form-control" id="ProveedorSelect" th:field="*{proveedor}">
 								<option th:each="proveedor: ${proveedores}" th:value="${proveedor.idProveedor}" th:text="${proveedor.ruc}"></option>
