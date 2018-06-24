@@ -3,6 +3,7 @@ package pe.edu.bpz.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,9 +38,18 @@ public class FacturaService implements IFacturaService{
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public List<Factura> findByEstado() {
 		// TODO Auto-generated method stub
 		return facturaDao.findByEstado();
+	}
+
+	@Override
+	@Transactional
+	@Modifying
+	public void updateEstado(Long id) {
+		// TODO Auto-generated method stub
+		facturaDao.updateEstado(id);
 	}
 
 	

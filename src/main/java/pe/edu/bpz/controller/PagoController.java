@@ -1,5 +1,7 @@
 package pe.edu.bpz.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import pe.edu.bpz.model.entity.Factura;
@@ -31,13 +34,12 @@ public class PagoController {
 	}
 	
 	@PostMapping("/pagar")
-	public String pagar(Model model,HttpServletRequest request) {
-		for(String id : request.getParameterValues("idfacturas")) {
-			long nro=Long.parseLong(id);
-			Factura factura=new Factura();
-			factura=fService.findbyId(nro);
-			factura.setEstado("Pagado");
-			System.out.println("jiijiji");
+	public String pagar(Model model,@RequestParam("idfacturas") List<String>ids) {
+		
+		
+		for (int i = 0; i < ids.size(); i++) {
+			
+			fService.updateEstado(Long.parseLong(ids.get(i)));
 		}
 		return "redirect:/pago/listar";
 	}

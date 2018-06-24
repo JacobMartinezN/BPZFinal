@@ -13,4 +13,6 @@ public interface IFacturaService {
     public Factura findbyId(Long id);
     
     public List<Factura> findByEstado();
+    
+    public void updateEstado(Long id);
 }
