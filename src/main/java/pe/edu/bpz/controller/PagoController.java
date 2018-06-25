@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ public class PagoController {
 	@Autowired
 	private IFacturaService fService;
 	
+	@Secured("ROLE_CONTADOR")
 	@GetMapping(value = "/listar")
 	public String listar(Model model){
 		model.addAttribute("titulo", "Listado de Facturas sin Pagar");
@@ -33,6 +35,7 @@ public class PagoController {
 		return "/pago/listar";	
 	}
 	
+	@Secured("ROLE_CONTADOR")
 	@PostMapping("/pagar")
 	public String pagar(Model model,@RequestParam("idfacturas") List<String>ids) {
 		

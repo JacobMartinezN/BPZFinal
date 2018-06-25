@@ -3,6 +3,7 @@ package pe.edu.bpz.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +28,7 @@ import pe.edu.bpz.service.IProveedorService;
 @SessionAttributes("cuenta")
 @RequestMapping(value="cuenta")
 public class CuentaController {
+	
 	@Autowired
 	private ICuentaService cService;
 	@Autowired
@@ -34,7 +36,7 @@ public class CuentaController {
 	@Autowired
 	private IProveedorService pService;
 	
-	
+	@Secured("ROLE_CUENTAS")
 	@GetMapping(value = "/crear/{id}")
 	public String crear(Model model,@PathVariable(value = "id") Long id) {
 
@@ -46,6 +48,8 @@ public class CuentaController {
 		model.addAttribute("bancos", bService.findAll());
 		return "cuenta/crear";
 	}
+	
+	@Secured("ROLE_CUENTAS")
 	@GetMapping("/eliminar/{id}")
 	public String eliminar(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
 
@@ -60,6 +64,8 @@ public class CuentaController {
 
 		return "proveedor/detalle";
 	}
+	
+	@Secured("ROLE_CUENTAS")
 	@GetMapping("/editar/{id}")
 	public String editar(@PathVariable(value = "id") Long id, Model model) {
 
@@ -69,6 +75,8 @@ public class CuentaController {
 		model.addAttribute("bancos", bService.findAll());
 		return "cuenta/crear";
 	}
+	
+	@Secured("ROLE_CUENTAS")
 	@PostMapping(value="/crear")
 	public String guardar(@Valid Cuenta cuenta, BindingResult result,Model model, RedirectAttributes flash,
 			SessionStatus status) {

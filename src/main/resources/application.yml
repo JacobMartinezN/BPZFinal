@@ -10,7 +10,7 @@ spring:
     driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost/BPZdb
     username: postgres
-    password: 19franny98
+    password: postgresql
     
     
     

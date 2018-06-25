@@ -3,7 +3,7 @@ package pe.edu.bpz.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -36,7 +36,7 @@ public class ProveedorController {
 	
 	
 	
-	
+	@Secured("ROLE_CUENTAS")
 	@GetMapping(value = "/listar")
 	public String listar(Model model){
 		model.addAttribute("titulo", "Listado de proveedores");
@@ -44,6 +44,7 @@ public class ProveedorController {
 		return "proveedor/listar";	
 	}
 	
+	@Secured("ROLE_CUENTAS")
 	@GetMapping(value = "/crear")
 	public String crear(Model model) {
 
@@ -52,6 +53,7 @@ public class ProveedorController {
 		model.addAttribute("titulo", "Nuevo Proveedor y Persona Contacto");
 		return "proveedor/crear";
 	}
+	@Secured("ROLE_CUENTAS")
 	@PostMapping(value="/crear")
 	public String guardar(@Valid Contenedor contenedor, BindingResult result,Model model, RedirectAttributes flash,
 			SessionStatus status) {
@@ -75,6 +77,7 @@ public class ProveedorController {
 		return "redirect:/proveedor/listar";
 	}
 	
+	@Secured("ROLE_CUENTAS")
 	@GetMapping("/eliminar/{id}")
 	public String eliminar(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
 
@@ -89,6 +92,8 @@ public class ProveedorController {
 
 		return "redirect:/proveedor/listar";
 	}
+	
+	@Secured("ROLE_CUENTAS")
 	@GetMapping("/editar/{id}")
 	public String editar(@PathVariable(value = "id") Long id, Model model) {
 
@@ -98,6 +103,8 @@ public class ProveedorController {
 		model.addAttribute("titulo", "Editar");
 		return "proveedor/editar";
 	}
+	
+	@Secured("ROLE_CUENTAS")
 	@PostMapping(value="/editar")
 	public String guardar(@Valid Proveedor proveedor, BindingResult result,Model model, RedirectAttributes flash,
 			SessionStatus status) {
@@ -113,6 +120,8 @@ public class ProveedorController {
 		
 		return "redirect:/proveedor/listar";
 	}
+	
+	@Secured("ROLE_CUENTAS")
 	@GetMapping("/detalle/{id}")
 	public String detalle(@PathVariable(value="id") Long id, Model model, RedirectAttributes flash) {
 		
