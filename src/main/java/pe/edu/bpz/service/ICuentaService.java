@@ -13,4 +13,6 @@ public interface ICuentaService {
 	public Cuenta findById(Long id);
 	
 	public void eliminarPorId(Long id);
+	
+	
 }
