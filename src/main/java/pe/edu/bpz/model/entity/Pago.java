@@ -78,6 +78,14 @@ public class Pago implements Serializable  {
 		this.factura = factura;
 	}
 
+	public Date getFechaPago() {
+		return fechaPago;
+	}
+
+	public void setFechaPago(Date fechaPago) {
+		this.fechaPago = fechaPago;
+	}
+
 
 	
 	

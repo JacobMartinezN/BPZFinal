@@ -58,19 +58,20 @@
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
      
-     <div class="card mb-3">
+    <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Facturas Pagadas</div>
+          <i class="fa fa-table"></i> Proveedores</div>
         <div class="card-body">
           <div class="table-responsive">
-          	
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
+           		<thead>
                 <tr>
                 	
-					<th>Seleccionar</th>
+					<th>Id</th>
 					<th>Numero de Factura</th>
+					<th>Razon Social</th>
 					<th>Fecha de Vencimiento</th>
+					<th>Fecha de Pago</th>
 					<th>Total</th>
 					<th>Estado</th>
 					
@@ -81,7 +82,9 @@
                 <tr th:each="facturapag: ${facturaspag}">
                 	<td th:text="${facturapag.id}"></td>
 							<td th:text="${facturapag.numFactura}"></td>
+							<td th:text="${facturapag.proveedor.razonSocial}"></td>
 							<td th:text="${facturapag.fechaVencimiento}"></td>
+							<td th:text="${facturapag.pago.fechaPago}"></td>
 							<td th:text="${facturapag.total}"></td>
 							<td th:text="${facturapag.estado}"></td>
 							
@@ -90,10 +93,8 @@
                 </tr>
               </tbody>
             </table>
-          
-           
           </div>
-          
+         
         </div>
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>

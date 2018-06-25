@@ -34,6 +34,12 @@ public class PagoController {
 	@Autowired
 	private IPagoService pService;
 	
+	@GetMapping("/listado")
+	public String listado(Model model) {
+		model.addAttribute("titulo", "Listado de Pagos");
+		model.addAttribute("pagos", pService.findAll());
+		return "/pago/listado";
+	}
 	
 	@GetMapping(value = "/listar")
 	public String listar(Model model){
