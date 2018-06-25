@@ -36,7 +36,7 @@ public class ProveedorController {
 	
 	
 	
-	@Secured("ROLE_CUENTAS")
+	
 	@GetMapping(value = "/listar")
 	public String listar(Model model){
 		model.addAttribute("titulo", "Listado de proveedores");
@@ -121,7 +121,7 @@ public class ProveedorController {
 		return "redirect:/proveedor/listar";
 	}
 	
-	@Secured("ROLE_CUENTAS")
+	
 	@GetMapping("/detalle/{id}")
 	public String detalle(@PathVariable(value="id") Long id, Model model, RedirectAttributes flash) {
 		

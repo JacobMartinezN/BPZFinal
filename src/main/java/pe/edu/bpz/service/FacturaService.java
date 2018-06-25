@@ -52,6 +52,13 @@ public class FacturaService implements IFacturaService{
 		facturaDao.updateEstado(id);
 	}
 
+	@Override
+	@Transactional(readOnly=true)
+	public List<Factura> findByEstado2() {
+		// TODO Auto-generated method stub
+		return facturaDao.findByEstado2();
+	}
+
 	
 
 }

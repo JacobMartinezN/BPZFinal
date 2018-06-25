@@ -38,7 +38,7 @@ public class FacturaController {
 	
 
 	
-	@Secured("ROLE_CUENTAS")
+	
 	@GetMapping(value = "/listar")
 	public String listar(Model model){
 		model.addAttribute("titulo", "Listado de Facturas");
@@ -122,7 +122,7 @@ public class FacturaController {
 		return "factura/crear";
 	}
 	
-	@Secured("ROLE_CUENTAS")
+
 	@GetMapping("/detalle/{id}")
 	public String detalle(@PathVariable(value="id") Long id, Model model, RedirectAttributes flash) {
 		
